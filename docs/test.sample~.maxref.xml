@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+<c74object name="test.sample~" module="msp" category="Testing">
+	<digest>Get samples from an audio signal</digest>
+	<description>
+		<o>test.sample~</o> is somewhat like <o>snapshot~</o> but better suited to the testing environment. 
+	</description>
+	
+	
+	<!--METADATA-->
+	<metadatalist>
+		<metadata name="author">Cycling '74</metadata>
+		<metadata name="tag">Testing</metadata>
+	</metadatalist>
+	
+
+	<!--ARGUMENTS-->
+	<objarglist/>
+	
+
+	<!--MESSAGES-->
+	<method name="bang">
+		<arglist />
+		<digest>Send collected samples to the outlet</digest>
+		<description>
+			Send collected samples to the outlet as floats.
+			Resets collection so that it can begin again.
+		</description>
+	</method>	
+	
+	
+	<!--ATTRIBUTES-->
+	<attributelist>
+		<attribute name="offset" get="1" set="1" type="int" size="1">
+			<digest>Offset into the vector at which to grab samples</digest>
+		</attribute>
+		<attribute name="vectoroffset" get="1" set="1" type="int" size="1">
+			<digest>Number of vectors to wait before grabbing samples</digest>
+		</attribute>
+		<attribute name="count" get="1" set="1" type="int" size="1">
+			<digest>Number of samples to grab</digest>
+		</attribute>
+		<attribute name="autorun" get="1" set="1" type="int" size="1">
+			<digest>Automatically 'bang' when audio is turned-on the first time.</digest>
+		</attribute>
+	</attributelist>
+
+
+	<!--SEEALSO-->
+	<seealsolist>
+		<seealso name="test.terminate" />
+		<seealso name="test.log" />
+		<seealso name="test.assert" />
+		<seealso name="snapshot~" />
+	</seealsolist>
+
+
+</c74object>

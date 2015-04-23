@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+<c74object name="test.assert" module="max" category="Testing">
+	<digest>Evaluate the sucess of a test</digest>
+	<description>
+		<o>test.assert</o> takes a 1 (success) or 0 (fail) as input to evaluate the success of an operation in a test patcher. 
+	</description>
+	
+	
+	<!--METADATA-->
+	<metadatalist>
+		<metadata name="author">Cycling '74</metadata>
+		<metadata name="tag">Testing</metadata>
+	</metadatalist>
+	
+
+	<!--ARGUMENTS-->
+	<objarglist>
+		<objarg name="name" optional="0" type="symbol">
+			<digest>Name of assertion</digest>
+			<description>
+				Every assertion in a test patcher should be named with an argument.
+			</description>
+		</objarg>
+	</objarglist>
+	
+
+	<!--MESSAGES-->
+	<methodlist>
+		<method name="int">
+			<arglist />
+			<digest>1/0 to indicate pass/fail</digest>
+			<description>
+				If no input is received, the assertion is deemed to have failed.
+			</description>
+		</method>	
+	</methodlist>
+	
+	
+	<!--ATTRIBUTES-->
+	<attributelist>
+		<attribute name="tags" get="1" set="1" type="symbol" size="1">
+			<digest>Optional tags to assist searching</digest>
+			<description>
+				Tags can be used to assist with searching the database of test results after automated testing has been executed.
+				Tags are optional and are space-delimited.
+				You can define up to 16 tags.
+			</description>
+		</attribute>
+	</attributelist>
+
+
+	<!--SEEALSO-->
+	<seealsolist>
+		<seealso name="test.terminate" />
+		<seealso name="test.log" />
+		<seealso name="test.error" />
+		<seealso name="test.equals" />
+		<seealso name="test.string.equals" />
+		<seealso name="test.sample~" />
+	</seealsolist>
+
+
+</c74object>

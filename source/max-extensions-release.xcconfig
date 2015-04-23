@@ -1,0 +1,13 @@
+#include "../max-sdk/source/c74support/max-includes/max-external-release.xcconfig"
+
+C74SUPPORT = $(SRCROOT)/../max-sdk/source/c74support
+C74_SYM_LINKER_FLAGS = @$(C74SUPPORT)/max-includes/c74_linker_flags.txt
+
+HEADER_SEARCH_PATHS = $(HEADER_SEARCH_PATHS_COMMON) "$(C74SUPPORT)/msp-includes"
+FRAMEWORK_SEARCH_PATHS = $(FRAMEWORK_SEARCH_PATHS_COMMON) "$(C74SUPPORT)/msp-includes/$(C74_FRAMEWORK_PATH_SUFFIX)"
+
+DSTROOT = $(SRCROOT)/../../extensions
+
+OTHER_LDFLAGS = $(C74_SYM_LINKER_FLAGS) -Wl,-U,_class_dspinit,-U,_dsp_add64,-U,_z_dsp_setup,-U,_z_dsp_free
+ARCHS = i386 x86_64
+ONLY_ACTIVE_ARCH=NO

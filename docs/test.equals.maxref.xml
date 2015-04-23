@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+<c74object name="test.equals" module="max" category="Testing">
+	<digest>Like the == object but better for floats</digest>
+	<description>
+		<o>test.equals</o> is somewhat like <o>==</o> but better suited for comparing floats. 
+	</description>
+	
+	
+	<!--METADATA-->
+	<metadatalist>
+		<metadata name="author">Cycling '74</metadata>
+		<metadata name="tag">Testing</metadata>
+	</metadatalist>
+	
+
+	<!--ARGUMENTS-->
+	<objarglist/>
+	
+
+	<!--MESSAGES-->
+	<methodlist>
+		<method name="float">
+			<arglist />
+			<digest>Number to be compared</digest>
+			<description>
+				Number in the right inlet sets the reference against which to compare.
+				Number in the left inlet compares and against the reference and sends a true/false (1 or 0) to the outlet.
+			</description>
+		</method>	
+	</methodlist>
+	
+	
+	<!--ATTRIBUTES-->
+	<attributelist>
+		<attribute name="tolerance" get="1" set="1" type="int" size="1">
+			<digest>Amount of error to accept</digest>
+			<description>
+				The amount of error to accept when comparing two floating-point numbers.
+				The tolerance defines the number of floating-point representations in either direction of the operand to consider as valid when determining equality.
+			</description>
+		</attribute>
+		
+		<attribute name="single_precision" get="1" set="1" type="int" size="1">
+			<digest>Force comparisons to 32-bit resolution</digest>
+			<description>
+				Comparisons will be done, by default, at 64-bit (double-precision) when running Max in 64-bits.
+				When run in 32-bit mode, comparisons will be made with 32-bit (single-precision).
+				If comparisons need to be done with 32-bit precision, even when Max is running in 64-bits, set this flag to 1.
+				For example, with Max 6.1 running in 64-bits the buffer~ object is still internally representing samples at 32-bits and any values coming from buffer~ will be subject to 32-bit roundoff errors.
+			</description>
+		</attribute>
+	</attributelist>
+
+
+	<!--SEEALSO-->
+	<seealsolist>
+		<seealso name="test.terminate" />
+		<seealso name="test.log" />
+		<seealso name="test.assert" />
+		<seealso name="test.sample~" />
+		<seealso name="test.string.equals" />
+	</seealsolist>
+
+
+</c74object>

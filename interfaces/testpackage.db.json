@@ -1,0 +1,10 @@
+{
+	"maxdb" : {
+		"internals" : [ "test.assert",
+						"test.equals",
+						"test.log",
+						"test.terminate",
+						"test.sample~"
+		]
+	}
+}

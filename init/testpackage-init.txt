@@ -1,0 +1,5 @@
+max objectfile test.assert oscar test.assert;
+max objectfile test.equals oscar test.equals;
+max objectfile test.log oscar test.log;
+max objectfile test.sample~ oscar test.sample~;
+max objectfile test.terminate oscar test.terminate;

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+<c74object name="test.log" module="max" category="Testing">
+	<digest>Log messages/data in a test</digest>
+	<description>
+		<o>test.log</o> is like the print object, except that the input will be printed to the test result database rather than just the Max window.
+	</description>
+	
+	
+	<!--METADATA-->
+	<metadatalist>
+		<metadata name="author">Cycling '74</metadata>
+		<metadata name="tag">Testing</metadata>
+	</metadatalist>
+	
+
+	<!--ARGUMENTS-->
+	<objarglist/>
+	
+
+	<!--MESSAGES-->
+	<methodlist>
+		<method name="anything">
+			<arglist />
+			<digest>messages to log in the test results</digest>
+			<description>
+				Messages to log in the test results. All messages will be automatically time-stamped in the database.
+			</description>
+		</method>	
+	</methodlist>
+	
+	
+	<!--ATTRIBUTES-->
+
+
+	<!--SEEALSO-->
+	<seealsolist>
+		<seealso name="test.assert" />
+		<seealso name="test.terminate" />
+		<seealso name="test.sample~" />
+	</seealsolist>
+
+
+</c74object>

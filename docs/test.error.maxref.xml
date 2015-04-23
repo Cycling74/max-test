@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+<c74object name="test.error" module="max" category="Testing">
+	<digest>Trap errors coming from the Max window</digest>
+	<description>
+		<o>test.error</o> is an abstraction around the error object. 
+	</description>
+	
+	
+	<!--METADATA-->
+	<metadatalist>
+		<metadata name="author">Cycling '74</metadata>
+		<metadata name="tag">Testing</metadata>
+	</metadatalist>
+	
+
+	<!--ARGUMENTS-->
+	<objarglist>
+		<objarg name="error" optional="0" type="int">
+			<digest>Report true on error</digest>
+			<description>
+				If non-zero, the result of an error will be true.
+				Otherwise, the result of an error will be false (a non-error will be true).
+			</description>
+		</objarg>
+	</objarglist>
+	
+
+	<!--MESSAGES-->
+	<method name="bang">
+		<arglist />
+		<digest>Arm the object to listen for errors</digest>
+		<description>
+			Arm the object to listen for errors posted to the Max window.
+			It will stop listening the next time the low-priority queue is serviced.
+		</description>
+	</method>	
+	
+	
+	<!--ATTRIBUTES-->
+
+
+	<!--SEEALSO-->
+	<seealsolist>
+		<seealso name="test.terminate" />
+		<seealso name="test.log" />
+		<seealso name="test.assert" />
+		<seealso name="test.sample~" />
+		<seealso name="test.equals" />
+	</seealsolist>
+
+
+</c74object>

@@ -3,6 +3,7 @@
 *.lo
 *.o
 *.obj
+build
 
 # Precompiled Headers
 *.gch
@@ -12,6 +13,7 @@
 *.so
 *.dylib
 *.dll
+extensions
 
 # Fortran module files
 *.mod
@@ -26,3 +28,8 @@
 *.exe
 *.out
 *.app
+
+# User Data Files
+*.db3
+xcuserdata
+project.xcworkspace
