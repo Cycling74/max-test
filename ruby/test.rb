@@ -28,6 +28,7 @@ require "#{olddir}/rosc/lib/osc"
 if (ARGV.length < 1 || ARGV.length > 2)
   puts "usage: ruby test.rb <path-to-max> <no-exit>"
   puts "examples:"
+  puts '  ruby test.rb "/Applications"'
   puts '  ruby test.rb "/Applications/Max 6.1"'
   puts '  ruby test.rb "C:\Program Files\Cycling \'74\Max 6.1"'
   puts
