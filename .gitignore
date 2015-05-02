@@ -33,3 +33,5 @@ extensions
 *.db3
 xcuserdata
 project.xcworkspace
+
+misc/testpackage-config.json
