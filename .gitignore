@@ -33,3 +33,6 @@ extensions
 *.db3
 xcuserdata
 project.xcworkspace
+
+*.sdf
+*.suo
