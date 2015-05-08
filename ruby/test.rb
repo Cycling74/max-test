@@ -25,9 +25,10 @@ require "#{olddir}/rosc/lib/osc"
 # argument processing
 ###################################################################
 
-if (ARGV.length != 1)
-  puts "usage: ruby test.rb <path-to-max>"
+if (ARGV.length < 1 || ARGV.length > 2)
+  puts "usage: ruby test.rb <path-to-max> <no-exit>"
   puts "examples:"
+  puts '  ruby test.rb "/Applications"'
   puts '  ruby test.rb "/Applications/Max 6.1"'
   puts '  ruby test.rb "C:\Program Files\Cycling \'74\Max 6.1"'
   puts
@@ -35,6 +36,8 @@ if (ARGV.length != 1)
 end
 
 @maxfolder = ARGV[0]
+@noexit = false
+@noexit = true if ARGV.length > 1
 
 ###################################################################
 # initialization
@@ -209,6 +212,8 @@ else
 end
 
 estring << "\n\n"
+# export results so a caller of this script is able to access the summary for e.g. automated email delivery
+ENV['MAXTEST'] = estring
 puts estring
 
 puts "    Full test results can be found @ "
@@ -217,4 +222,4 @@ puts "    and explored in your favorite SQLite database client."
 puts
 
 # Must explicitly exit or we end up with a zombie process due to un-joined threads
-exit 0
+exit 0 if !@noexit

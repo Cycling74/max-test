@@ -36,3 +36,4 @@ project.xcworkspace
 
 *.sdf
 *.suo
+misc/testpackage-config.json
