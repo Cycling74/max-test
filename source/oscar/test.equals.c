@@ -111,12 +111,6 @@ t_bool testequals_equivalent(double a, double b)
 
 #ifdef WIN_VERSION
 #include <float.h>
-#define nextafter _nextafter
-#ifdef C74_X64
-#define nextafterf _nextafterf
-#else // on 32-bit win nextafterf is not defined
-#define nextafterf _nextafter
-#endif // X64
 #endif
 
 t_bool testequals_equivalent(double a, double b, long tolerance, long single_precision)
@@ -130,12 +124,12 @@ t_bool testequals_equivalent(double a, double b, long tolerance, long single_pre
 		int		operand_is_negative = (b < 0.0);
 		
 		if (single_precision) {
-			float	next = nextafterf(b, FLT_MAX);
-			float	prev = nextafterf(b, -FLT_MAX);
+			float	next = nextafter((float)b, FLT_MAX);
+			float	prev = nextafter((float)b, -FLT_MAX);
 			
 			for (i=1; i<tolerance; i++) {
-				next = nextafterf(next, FLT_MAX);
-				prev = nextafterf(prev, -FLT_MAX);
+				next = nextafter(next, FLT_MAX);
+				prev = nextafter(prev, -FLT_MAX);
 			}
 			
 			if (operand_is_negative && a <= prev && a >= next)
