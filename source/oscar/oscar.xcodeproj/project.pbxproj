@@ -30,7 +30,7 @@
 		226605D3152B6E1B00FFCFD0 /* test.assert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = test.assert.c; sourceTree = "<group>"; };
 		226605D7152B78DB00FFCFD0 /* test.terminate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = test.terminate.c; sourceTree = "<group>"; };
 		226605FE152CB2EC00FFCFD0 /* ext_test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ext_test.c; sourceTree = "<group>"; };
-		22922AD40F38D68200B1EFEA /* commonsyms.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = commonsyms.c; path = "../max-sdk/source/c74support/max-includes/common/commonsyms.c"; sourceTree = SOURCE_ROOT; };
+		22922AD40F38D68200B1EFEA /* commonsyms.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = commonsyms.c; path = "../maxsdk/source/c74support/max-includes/common/commonsyms.c"; sourceTree = SOURCE_ROOT; };
 		22BF33FE107E07A300626BA1 /* ext_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ext_test.h; sourceTree = SOURCE_ROOT; };
 		22C3908D152F6DC900D3D340 /* test.log.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = test.log.c; sourceTree = "<group>"; };
 		22D397821056BD1C004D8017 /* oscar.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = oscar.c; sourceTree = "<group>"; };

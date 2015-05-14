@@ -1,6 +1,6 @@
-#include "../max-sdk/source/c74support/max-includes/max-external-debug.xcconfig"
+#include "../maxsdk/source/c74support/max-includes/max-external-debug.xcconfig"
 
-C74SUPPORT = $(SRCROOT)/../max-sdk/source/c74support
+C74SUPPORT = $(SRCROOT)/../maxsdk/source/c74support
 C74_SYM_LINKER_FLAGS = @$(C74SUPPORT)/max-includes/c74_linker_flags.txt
 
 HEADER_SEARCH_PATHS = $(HEADER_SEARCH_PATHS_COMMON) "$(C74SUPPORT)/msp-includes"
