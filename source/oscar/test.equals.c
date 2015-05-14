@@ -127,6 +127,19 @@ t_bool testequals_equivalent(double a, double b, long tolerance, long single_pre
 			float	next = nextafter((float)b, FLT_MAX);
 			float	prev = nextafter((float)b, -FLT_MAX);
 			
+			// if next == prev then bail on this method and just compare strings
+			if (next == prev) {
+				char a_str[16];
+				char b_str[16];
+				
+				snprintf(a_str, 16, "%.6f", a);
+				snprintf(b_str, 16, "%.6f", b);
+				if (!strcmp(a_str, b_str))
+					return true;
+				else
+					return false;
+			}
+			
 			for (i=1; i<tolerance; i++) {
 				next = nextafter(next, FLT_MAX);
 				prev = nextafter(prev, -FLT_MAX);
@@ -143,6 +156,19 @@ t_bool testequals_equivalent(double a, double b, long tolerance, long single_pre
 			double	next = nextafter(b, DBL_MAX);
 			double	prev = nextafter(b, -DBL_MAX);
 			
+			// if next == prev then bail on this method and just compare strings
+			if (next == prev) {
+				char a_str[32];
+				char b_str[32];
+				
+				snprintf(a_str, 32, "%.15f", a);
+				snprintf(b_str, 32, "%.15f", b);
+				if (!strcmp(a_str, b_str))
+					return true;
+				else
+					return false;
+			}
+
 			for (i=1; i<tolerance; i++) {
 				next = nextafter(next, DBL_MAX);
 				prev = nextafter(prev, -DBL_MAX);
