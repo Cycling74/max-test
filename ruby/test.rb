@@ -30,6 +30,7 @@ if (ARGV.length < 1 || ARGV.length > 2)
   puts "examples:"
   puts '  ruby test.rb "/Applications"'
   puts '  ruby test.rb "/Applications/Max 6.1"'
+  puts '  ruby test.rb "/Applications/Max7.app"  --- you can give the path to the max application directly'
   puts '  ruby test.rb "C:\Program Files\Cycling \'74\Max 6.1"'
   puts
   exit;
@@ -149,7 +150,11 @@ end
 
 def launchMax
   if RUBY_PLATFORM.match(/darwin/)
+    if @maxfolder.match(/\.app\/*$/) # check if app name given directly
+      `open "#{@maxfolder}/Contents/MacOS/Max"`
+    else # nope, just a folder name, so assume Max.app
     `open "#{@maxfolder}/Max.app/Contents/MacOS/Max"`
+    end
   else
     IO.popen("#{@maxfolder}/Max.exe")
   end
