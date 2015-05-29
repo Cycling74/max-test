@@ -3,6 +3,8 @@ Automated Test Harness for Max
 
 This package provides a set of simple tools with which to instrument patchers to verify expected behavior. Patchers that are instrumented as "test patchers" assist in fast identification of bugs, of the expectations of the patcher's author, and fast verification once a bug is addressed. Furthermore, instrumented test patchers can be evaluated as part of an automated system on multiple architectures and platforms.
 
+A video introduction is available at https://www.youtube.com/watch?v=l_3W4tZcgXI
+
 ## Construction of a Test
 
 A test patcher **must** meet the following criteria:
