@@ -6,7 +6,10 @@
 
 #include "oscar.h"
 #include "z_dsp.h"
-
+#ifdef WIN_VERSION
+#include <float.h>
+#endif
+#include <algorithm>
 
 /** like == but can compare floating-point numbers while tolerating the floating-point (im)precision.
  */
@@ -61,7 +64,7 @@ void* testequals_new(t_symbol *s, long argc, t_atom *argv)
 	
 	x->x_outlet = outlet_new(x, NULL);
 	x->x_inlet = proxy_new(x, 1, NULL);
-	x->x_tolerance = 1;
+	x->x_tolerance = 2;
 #ifdef C74_X64
 	x->x_single_precision = false;
 #else
@@ -89,106 +92,29 @@ void testequals_assist(t_testequals *x, void *b, long m, long a, char *s)
 }
 
 
-#ifdef OLD
-static const double k_epsilon = 0.000001;
+// see http://realtimecollisiondetection.net/blog/?p=89 regarding the comparison
 
-t_bool testequals_equivalent(double a, double b)
-{
-	t_bool	result;
-	double	a_abs = fabs(a);
-	double	b_abs = fabs(b);
-	double	absolute_or_relative = (1.0f > a_abs ? 1.0f : a_abs);
-	
-	absolute_or_relative = (absolute_or_relative > b_abs ? absolute_or_relative : b_abs);
-	if (fabs(a - b) <= k_epsilon * absolute_or_relative)
-		result = true;
-	else
-		result = false;
-
-	return result;
-}
-#else
-
-#ifdef WIN_VERSION
-#include <float.h>
-#endif
+static const double k_epsilon64 = DBL_MIN;
+static const float k_epsilon32 = FLT_MIN;
 
 t_bool testequals_equivalent(double a, double b, long tolerance, long single_precision)
 {
-	if (a == b) {
-		return true;
+	if (single_precision) {
+		float tol = tolerance * k_epsilon32;
+		float maxab = std::max(fabsf((float)a), fabsf((float)b));
+		
+		if ( fabsf((float)a - (float)b) <= tol * std::max(1.0f, maxab) )
+			return true;
 	}
 	else {
-		t_bool	result;
-		int		i;
-		int		operand_is_negative = (b < 0.0);
+		double tol = tolerance * k_epsilon64;
+		double maxab = std::max(fabs(a), fabs(b));
 		
-		if (single_precision) {
-			float	next = nextafter((float)b, FLT_MAX);
-			float	prev = nextafter((float)b, -FLT_MAX);
-			
-			// if next == prev then bail on this method and just compare strings
-			if (next == prev) {
-				char a_str[16];
-				char b_str[16];
-				
-				snprintf(a_str, 16, "%.6f", a);
-				snprintf(b_str, 16, "%.6f", b);
-				if (!strcmp(a_str, b_str))
-					return true;
-				else
-					return false;
-			}
-			
-			for (i=1; i<tolerance; i++) {
-				next = nextafter(next, FLT_MAX);
-				prev = nextafter(prev, -FLT_MAX);
-			}
-			
-			if (operand_is_negative && a <= prev && a >= next)
-				result = true;
-			else if (a >= prev && a <= next) // operand is positive
-				result = true;
-			else
-				result = false;
-		}
-		else { // double precision
-			double	next = nextafter(b, DBL_MAX);
-			double	prev = nextafter(b, -DBL_MAX);
-			
-			// if next == prev then bail on this method and just compare strings
-			if (next == prev) {
-				char a_str[32];
-				char b_str[32];
-				
-				snprintf(a_str, 32, "%.15f", a);
-				snprintf(b_str, 32, "%.15f", b);
-				if (!strcmp(a_str, b_str))
-					return true;
-				else
-					return false;
-			}
-
-			for (i=1; i<tolerance; i++) {
-				next = nextafter(next, DBL_MAX);
-				prev = nextafter(prev, -DBL_MAX);
-			}
-
-			if (operand_is_negative && a <= prev && a >= next)
-				result = true;
-			else if (a >= prev && a <= next) // operand is positive
-				result = true;
-			else
-				result = false;
-		}
-
-		return result;
+		if ( fabs(a - b) <= tol * std::max(1.0, maxab) )
+			return true;
 	}
+	return false;
 }
-
-#endif // OLD
-
-
 
 
 void testequals_float(t_testequals *x, double f)

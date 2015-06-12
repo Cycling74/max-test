@@ -26,10 +26,14 @@ extern t_atom_long g_port_send;
 extern t_atom_long g_port_listen;
 extern char g_dbpath[MAX_PATH_CHARS];
 
+BEGIN_USING_C_LINKAGE
+
 void deferred_startup(void);
 t_max_err loadextern(t_symbol *objectname, long argc, t_atom *argv, t_object **object);
 void autocolorbox(t_object *x);
 t_object *gettoplevelpatcher(t_object *patcher);
+
+END_USING_C_LINKAGE
 
 
 /************************************************************************/
@@ -206,7 +210,9 @@ void	testassert_pop(t_testassert *x);
 #pragma mark test.equals
 #endif
 
+BEGIN_USING_C_LINKAGE
 void	testequals_classinit(void);
+END_USING_C_LINKAGE
 
 
 /************************************************************************/
