@@ -135,6 +135,7 @@ def waitForAllTestCompletion
   @testCompleted = 0
 
   @oscReceiver.add_method('/test/all/complete', '') do |msg|
+    puts "    all tests completed"
     @testCompleted = 1
   end
 
@@ -157,6 +158,20 @@ def launchMax
     end
   else
     IO.popen("#{@maxfolder}/Max.exe")
+  end
+  
+  @oscReceiver.add_method('/db/log', 's') do |msg|
+    puts "    #{msg.args[0]}"
+    
+    # on the mac things can stall out if Max is not made the front-most application
+    if RUBY_PLATFORM.match(/darwin/)
+        if @maxfolder.match(/\.app\/*$/) # check if app name given directly
+          `open "#{@maxfolder}"`
+        else # nope, just a folder name, so assume Max.app
+          `open "#{@maxfolder}/Max.app"`
+        end
+    end
+    
   end
 end
 

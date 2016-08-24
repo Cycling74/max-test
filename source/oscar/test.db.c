@@ -135,9 +135,16 @@ void testdb_log(t_testdb *d, long test_id, const char* text, ...)
 	t_datetime		datetime;
 	va_list			ap;
 	char			expandedtext[2048];
-	
+
 	va_start(ap, text);
 	vsnprintf(expandedtext, 2048, text, ap);
+
+	{
+		t_atom a;
+		atom_setsym(&a, gensym(expandedtext));
+		testport_send((t_testport*)ps_testport->s_thing, gensym("/db/log"), 1, &a);
+	}
+
 	systime_secondstodate(timestamp, &datetime);
 	db_query(d->d_db, NULL, "INSERT INTO logs ( test_id_ext , text , timestamp ) \
 									VALUES   ( %i         , \"%s\"   , '%4u-%02u-%02u %02u:%02u:%02u' )", 
