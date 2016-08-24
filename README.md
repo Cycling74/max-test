@@ -43,7 +43,7 @@ You can communicate with Max remotely to fully automate the running of test patc
 
 Communication with uses Open Sound Control communicated via UDP. Internal to Max this is implemented using the udpsend and udpreceive objects. By default the oscar extension does not have remote communication enabled.
 
-To enable this remote communication you must set it by creating a configuration file in the `max-test/misc` folder called `max-test-config.json` -- the contents of which should look like this:
+To enable this remote communication you must set it by creating a configuration file in the `max-test/misc` folder called `testpackage-config.json` -- the contents of which should look like this:
 
       {
         "port-send" : 4792,
