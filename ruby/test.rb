@@ -63,6 +63,18 @@ puts
 # sub routines
 ###################################################################
 
+# on the mac things can stall out if Max is not the front-most application or doesn't have ui interaction
+# so an easy hack is simply "open" it
+def touch
+  if RUBY_PLATFORM.match(/darwin/)
+    if @maxfolder.match(/\.app\/*$/) # check if app name given directly
+      `open "#{@maxfolder}"`
+    else # nope, just a folder name, so assume Max.app
+      `open "#{@maxfolder}/Max.app"`
+    end
+  end
+end
+
 def establishCommunication
   @pingReturned = 0
 
@@ -144,6 +156,7 @@ def waitForAllTestCompletion
   end
 
   while @testCompleted == 0
+    touch
     sleep 1
   end
 end
@@ -151,29 +164,24 @@ end
 
 def launchMax
   if RUBY_PLATFORM.match(/darwin/)
+
+    # using the system "open" command is convenient on a local machine to 
+    # keep the test output separate from Max's console output
+    # but on a remote machine you then lose the ability to see the console output
+
     if @maxfolder.match(/\.app\/*$/) # check if app name given directly
-#      `open "#{@maxfolder}/Contents/MacOS/Max"`
-        IO.popen("#{@maxfolder}/Contents/MacOS/Max")
+      #`open "#{@maxfolder}/Contents/MacOS/Max"`
+      IO.popen("#{@maxfolder}/Contents/MacOS/Max")
     else # nope, just a folder name, so assume Max.app
-#    `open "#{@maxfolder}/Max.app/Contents/MacOS/Max"`
-        IO.popen("#{@maxfolder}/Max.app/Contents/MacOS/Max")
+      # `open "#{@maxfolder}/Max.app/Contents/MacOS/Max"`
+      IO.popen("#{@maxfolder}/Max.app/Contents/MacOS/Max")
     end
   else
     IO.popen("#{@maxfolder}/Max.exe")
   end
-  
+
   @oscReceiver.add_method('/db/log', 's') do |msg|
     puts "    #{msg.args[0]}"
-    
-    # on the mac things can stall out if Max is not made the front-most application
-    if RUBY_PLATFORM.match(/darwin/)
-        if @maxfolder.match(/\.app\/*$/) # check if app name given directly
-          `open "#{@maxfolder}"`
-        else # nope, just a folder name, so assume Max.app
-          `open "#{@maxfolder}/Max.app"`
-        end
-    end
-    
   end
 end
 
