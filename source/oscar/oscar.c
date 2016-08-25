@@ -42,7 +42,9 @@ void ext_main(void *r)
 	ps_testmaster->s_thing = (t_object*)object_new_typed(_sym_nobox, ps_testmaster, 0, NULL);
 	
 	defer_low(ps_testmaster->s_thing, (method)deferred_startup, NULL, 0, NULL);
-	quittask_install((method)testmaster_quittask, NULL);	
+	quittask_install((method)testmaster_quittask, NULL);
+
+	object_method(gensym("max")->s_thing, gensym("setmirrortoconsole"), 1);
 }
 
 
