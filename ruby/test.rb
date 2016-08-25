@@ -152,9 +152,11 @@ end
 def launchMax
   if RUBY_PLATFORM.match(/darwin/)
     if @maxfolder.match(/\.app\/*$/) # check if app name given directly
-      `open "#{@maxfolder}/Contents/MacOS/Max"`
+#      `open "#{@maxfolder}/Contents/MacOS/Max"`
+        IO.popen("#{@maxfolder}/Contents/MacOS/Max")
     else # nope, just a folder name, so assume Max.app
-    `open "#{@maxfolder}/Max.app/Contents/MacOS/Max"`
+#    `open "#{@maxfolder}/Max.app/Contents/MacOS/Max"`
+        IO.popen("#{@maxfolder}/Max.app/Contents/MacOS/Max")
     end
   else
     IO.popen("#{@maxfolder}/Max.exe")
@@ -202,6 +204,7 @@ puts "  RESULTS"
 
 sleep 5 # hack -- the db might still be open because it doesn't get flushed in a quittask...
 
+puts "  opening database at #{@testdbPath}"
 db = SQLite3::Database.new( "#{@testdbPath}" )
 
 testcount = db.execute("SELECT test_name FROM tests WHERE test_start >= Datetime('#{@starttime}') ").length
