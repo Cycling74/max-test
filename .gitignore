@@ -37,3 +37,5 @@ project.xcworkspace
 *.sdf
 *.suo
 misc/testpackage-config.json
+
+.dsp_cache
