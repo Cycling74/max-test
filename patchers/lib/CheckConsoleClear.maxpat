@@ -5,7 +5,7 @@
 			"major" : 7,
 			"minor" : 2,
 			"revision" : 5,
-			"architecture" : "x86",
+			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
@@ -45,7 +45,8 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 330.0, 420.0, 30.0, 30.0 ],
+					"patching_rect" : [ 420.0, 420.0, 30.0, 30.0 ],
+					"presentation_rect" : [ 413.0, 418.0, 0.0, 0.0 ],
 					"style" : ""
 				}
 
@@ -119,7 +120,7 @@
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "bang" ],
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 150.0, 125.0, 30.0, 30.0 ],
 					"style" : ""
 				}
@@ -144,9 +145,8 @@
 					"id" : "obj-11",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 225.0, 365.0, 297.0, 20.0 ],
+					"numoutlets" : 0,
+					"patching_rect" : [ 225.0, 365.0, 169.0, 20.0 ],
 					"style" : "",
 					"text" : "test.assert #1:Console"
 				}
@@ -197,7 +197,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 405.0, 320.0, 319.0, 20.0 ],
+					"patching_rect" : [ 405.0, 320.0, 191.0, 20.0 ],
 					"style" : "",
 					"text" : "test.log #1:ConsoleErrors"
 				}
@@ -326,12 +326,15 @@
 
 			}
  ],
+		"dependency_cache" : [  ],
+		"autosave" : 0,
 		"styles" : [ 			{
 				"name" : "cassiel",
 				"default" : 				{
 					"fontname" : [ "Courier" ],
-					"color" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"bgcolor" : [ 0.095481, 0.100396, 0.100293, 1.0 ],
+					"patchlinecolor" : [ 0.960784, 0.827451, 0.156863, 0.9 ],
+					"color" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"elementcolor" : [ 0.32549, 0.345098, 0.372549, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
@@ -343,8 +346,7 @@
 						"autogradient" : 0
 					}
 ,
-					"selectioncolor" : [ 0.784314, 0.145098, 0.023529, 1.0 ],
-					"patchlinecolor" : [ 0.960784, 0.827451, 0.156863, 0.9 ]
+					"selectioncolor" : [ 0.784314, 0.145098, 0.023529, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
@@ -374,9 +376,9 @@
 				"name" : "sky-blue",
 				"default" : 				{
 					"fontname" : [ "Courier" ],
+					"bgcolor" : [ 0.670588, 0.74902, 0.807843, 1.0 ],
 					"textcolor_inverse" : [ 0.239216, 0.254902, 0.278431, 1.0 ],
 					"color" : [ 0.095481, 0.100396, 0.100293, 1.0 ],
-					"bgcolor" : [ 0.670588, 0.74902, 0.807843, 1.0 ],
 					"elementcolor" : [ 0.792189, 0.848618, 0.854853, 1.0 ],
 					"selectioncolor" : [ 0.870588, 0.415686, 0.062745, 1.0 ]
 				}
