@@ -5,7 +5,7 @@
 			"major" : 7,
 			"minor" : 2,
 			"revision" : 5,
-			"architecture" : "x86",
+			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
@@ -39,6 +39,19 @@
 		"style" : "cassiel",
 		"subpatcher_template" : "cassiel",
 		"boxes" : [ 			{
+				"box" : 				{
+					"comment" : "bang when checked",
+					"id" : "obj-1",
+					"maxclass" : "outlet",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 270.0, 440.0, 30.0, 30.0 ],
+					"presentation_rect" : [ 115.0, 426.0, 0.0, 0.0 ],
+					"style" : ""
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-25",
 					"maxclass" : "message",
@@ -159,7 +172,7 @@
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "bang" ],
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 105.0, 30.0, 30.0, 30.0 ],
 					"style" : ""
 				}
@@ -171,8 +184,7 @@
 					"id" : "obj-11",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"numoutlets" : 0,
 					"patching_rect" : [ 180.0, 405.0, 370.0, 20.0 ],
 					"style" : "",
 					"text" : "test.assert #1:ExpectedMatch #2"
@@ -207,6 +219,15 @@
 			}
  ],
 		"lines" : [ 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
 				"patchline" : 				{
 					"destination" : [ "obj-11", 0 ],
 					"disabled" : 0,
@@ -306,9 +327,16 @@
 
 			}
  ],
+		"dependency_cache" : [  ],
+		"autosave" : 0,
 		"styles" : [ 			{
 				"name" : "cassiel",
 				"default" : 				{
+					"fontname" : [ "Courier" ],
+					"bgcolor" : [ 0.095481, 0.100396, 0.100293, 1.0 ],
+					"patchlinecolor" : [ 0.960784, 0.827451, 0.156863, 0.9 ],
+					"color" : [ 1.0, 1.0, 1.0, 1.0 ],
+					"elementcolor" : [ 0.32549, 0.345098, 0.372549, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -319,12 +347,7 @@
 						"autogradient" : 0
 					}
 ,
-					"bgcolor" : [ 0.095481, 0.100396, 0.100293, 1.0 ],
-					"color" : [ 1.0, 1.0, 1.0, 1.0 ],
-					"elementcolor" : [ 0.32549, 0.345098, 0.372549, 1.0 ],
-					"selectioncolor" : [ 0.784314, 0.145098, 0.023529, 1.0 ],
-					"patchlinecolor" : [ 0.960784, 0.827451, 0.156863, 0.9 ],
-					"fontname" : [ "Courier" ]
+					"selectioncolor" : [ 0.784314, 0.145098, 0.023529, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
@@ -342,9 +365,9 @@
 , 			{
 				"name" : "foo-style",
 				"default" : 				{
+					"fontname" : [ "Courier" ],
 					"color" : [ 0.720698, 0.16723, 0.080014, 1.0 ],
-					"elementcolor" : [ 0.836576, 0.903148, 0.643029, 1.0 ],
-					"fontname" : [ "Courier" ]
+					"elementcolor" : [ 0.836576, 0.903148, 0.643029, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
@@ -353,12 +376,12 @@
 , 			{
 				"name" : "sky-blue",
 				"default" : 				{
+					"fontname" : [ "Courier" ],
 					"bgcolor" : [ 0.670588, 0.74902, 0.807843, 1.0 ],
 					"textcolor_inverse" : [ 0.239216, 0.254902, 0.278431, 1.0 ],
 					"color" : [ 0.095481, 0.100396, 0.100293, 1.0 ],
 					"elementcolor" : [ 0.792189, 0.848618, 0.854853, 1.0 ],
-					"selectioncolor" : [ 0.870588, 0.415686, 0.062745, 1.0 ],
-					"fontname" : [ "Courier" ]
+					"selectioncolor" : [ 0.870588, 0.415686, 0.062745, 1.0 ]
 				}
 ,
 				"parentstyle" : "default",
