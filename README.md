@@ -5,6 +5,8 @@ This package provides a set of simple tools with which to instrument patchers to
 
 A video introduction is available at https://www.youtube.com/watch?v=l_3W4tZcgXI
 
+**NB**: `max-test` must be installed as a Package for Max (in `~/Documents/Max 7/Packages` on macOS, `My Documents\Max 7\Packages` on Windows). This is so that Max picks up the externals, plus some configuration and initialisation code. Otherwise, the networking support will be absent and automated testing will hang. Test patchers need only be in Max's search path.
+
 ## Construction of a Test
 
 A test patcher **must** meet the following criteria:
