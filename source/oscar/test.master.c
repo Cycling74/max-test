@@ -152,7 +152,7 @@ void testmaster_integration(t_testmaster *m, t_symbol *s, long argc, t_atom *arg
 	else { // No args, so that means we want to run all patchers/projects ending in .maxtest.maxpat/.maxtest.maxzip in the searchpath
 		short version = maxversion();
 
-		if ( ((version >> 8) & 0xF) == 7 ) {
+		if ( (((version >> 8) & 0xF) > 6) && (((version >> 8) & 0xF) < 15) ) {
 			t_database		*db = NULL;
 			t_db_result		*result = NULL;
 			
