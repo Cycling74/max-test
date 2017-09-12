@@ -171,10 +171,10 @@ def launchMax
 
     if @maxfolder.match(/\.app\/*$/) # check if app name given directly
       #`open "#{@maxfolder}/Contents/MacOS/Max"`
-      IO.popen("#{@maxfolder}/Contents/MacOS/Max")
+      IO.popen("\"#{@maxfolder}\"/Contents/MacOS/Max")
     else # nope, just a folder name, so assume Max.app
       # `open "#{@maxfolder}/Max.app/Contents/MacOS/Max"`
-      IO.popen("#{@maxfolder}/Max.app/Contents/MacOS/Max")
+      IO.popen("\"#{@maxfolder}\"/Max.app/Contents/MacOS/Max")
     end
   else
     IO.popen("#{@maxfolder}/Max.exe")
