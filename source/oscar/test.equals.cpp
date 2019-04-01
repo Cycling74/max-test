@@ -94,8 +94,8 @@ void testequals_assist(t_testequals *x, void *b, long m, long a, char *s)
 
 // see http://realtimecollisiondetection.net/blog/?p=89 regarding the comparison
 
-static const double k_epsilon64 = DBL_MIN;
-static const float k_epsilon32 = FLT_MIN;
+static const double k_epsilon64 = DBL_EPSILON;
+static const float k_epsilon32 = FLT_EPSILON;
 
 t_bool testequals_equivalent(double a, double b, long tolerance, long single_precision)
 {
