@@ -76,7 +76,7 @@ void ext_main(void *r)
 	class_addmethod(c, (method) uisimp_mousedown, "mousedown", A_CANT, 0);
 	class_addmethod(c, (method) uisimp_mousedragdelta, "mousedragdelta", A_CANT, 0);
 	class_addmethod(c, (method) uisimp_mouseup, "mouseup", A_CANT, 0);
-	class_addmethod(c, (method) uisimp_getdrawparams, "getdrawparams", A_CANT, 0);
+//	class_addmethod(c, (method) uisimp_getdrawparams, "getdrawparams", A_CANT, 0);
 	class_addmethod(c, (method) uisimp_hittest, "hittest", A_CANT, 0);
 
 	class_addmethod(c, (method) uisimp_key, "key", A_CANT, 0);

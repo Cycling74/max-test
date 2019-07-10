@@ -1,10 +1,10 @@
  {
- "name": "max-test",
+ "name": "Max-Test",
  "type": "package",
  "author": "Cycling '74",
  "description": "Max-Test provides tools for creating and running test patchers with Max.",
- "version": "1.0.0",
- "major_version": "1",
+ "version": "7.0.3",
+ "major_version": "7",
  "minor_version": "0",
- "min_max_version": "7.1.0"
+ "min_max_version": "6.1.9"
 }

@@ -101,16 +101,16 @@ t_bool testequals_equivalent(double a, double b, long tolerance, long single_pre
 {
 	if (single_precision) {
 		float tol = tolerance * k_epsilon32;
-		float maxab = std::max(fabsf((float)a), fabsf((float)b));
+		float maxab = (std::max)(fabsf((float)a), fabsf((float)b));
 		
-		if ( fabsf((float)a - (float)b) <= tol * std::max(1.0f, maxab) )
+		if ( fabsf((float)a - (float)b) <= tol * (std::max)(1.0f, maxab) )
 			return true;
 	}
 	else {
 		double tol = tolerance * k_epsilon64;
-		double maxab = std::max(fabs(a), fabs(b));
+		double maxab = (std::max)(fabs(a), fabs(b));
 		
-		if ( fabs(a - b) <= tol * std::max(1.0, maxab) )
+		if ( fabs(a - b) <= tol * (std::max)(1.0, maxab) )
 			return true;
 	}
 	return false;

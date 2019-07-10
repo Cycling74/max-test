@@ -5,8 +5,11 @@
 puts "Max Automated Test Runner"
 
 olddir = Dir.getwd
+estring = ""
+testpass = ""
 
 require 'rubygems'
+require 'timeout'
 gemlist = `gem list`.strip
 if !/^sqlite3/.match gemlist
   puts
@@ -15,10 +18,17 @@ if !/^sqlite3/.match gemlist
   puts
   exit
 end
+if !/^rosc/.match gemlist
+  puts
+  puts "-> You are missing the 'rosc' rubygem, which you need for automated testing."
+  puts "-> Please type 'gem install rosc' in the Terminal."
+  puts
+  exit
+end
 require 'fileutils'
 require 'pathname'
 require 'sqlite3'
-require "#{olddir}/rosc/lib/osc"
+require 'osc'
 
 
 ###################################################################
@@ -58,22 +68,9 @@ puts
 @testdbPath = ""
 @starttime = Time.now.iso8601.chop.chop.chop.chop.chop.chop
 
-
 ###################################################################
 # sub routines
 ###################################################################
-
-# on the mac things can stall out if Max is not the front-most application or doesn't have ui interaction
-# so an easy hack is simply "open" it
-def touch
-  if RUBY_PLATFORM.match(/darwin/)
-    if @maxfolder.match(/\.app\/*$/) # check if app name given directly
-      `open "#{@maxfolder}"`
-    else # nope, just a folder name, so assume Max.app
-      `open "#{@maxfolder}/Max.app"`
-    end
-  end
-end
 
 def establishCommunication
   @pingReturned = 0
@@ -85,9 +82,9 @@ def establishCommunication
   @oscReceiver.add_method('/ping/return', '') do |msg|
     puts "    Ping successfully returned."
     puts ""
-    
+
     @oscSender.send(OSC::Message.new('/testdb/path?'), 0, @host, @sendPort)
-    sleep 1 
+    sleep 1
     @pingReturned = 1
   end
 
@@ -147,7 +144,6 @@ def waitForAllTestCompletion
   @testCompleted = 0
 
   @oscReceiver.add_method('/test/all/complete', '') do |msg|
-    puts "    all tests completed"
     @testCompleted = 1
   end
 
@@ -156,7 +152,6 @@ def waitForAllTestCompletion
   end
 
   while @testCompleted == 0
-    touch
     sleep 1
   end
 end
@@ -164,24 +159,16 @@ end
 
 def launchMax
   if RUBY_PLATFORM.match(/darwin/)
-
-    # using the system "open" command is convenient on a local machine to 
-    # keep the test output separate from Max's console output
-    # but on a remote machine you then lose the ability to see the console output
-
+    archcmd = ""
+    archcmd << "arch -arch i386" if /^i386/.match(ENV['ARCHPREFERENCE'])
+    archcmd << "arch -arch x86_64" if /^x86_64/.match(ENV['ARCHPREFERENCE'])
     if @maxfolder.match(/\.app\/*$/) # check if app name given directly
-      #`open "#{@maxfolder}/Contents/MacOS/Max"`
-      IO.popen("\"#{@maxfolder}\"/Contents/MacOS/Max")
+      IO.popen("#{archcmd} \"#{@maxfolder}/Contents/MacOS/Max\"")
     else # nope, just a folder name, so assume Max.app
-      # `open "#{@maxfolder}/Max.app/Contents/MacOS/Max"`
-      IO.popen("\"#{@maxfolder}\"/Max.app/Contents/MacOS/Max")
+      IO.popen("#{archcmd} \"#{@maxfolder}/Max.app/Contents/MacOS/Max\"")
     end
   else
     IO.popen("#{@maxfolder}/Max.exe")
-  end
-
-  @oscReceiver.add_method('/db/log', 's') do |msg|
-    puts "    #{msg.args[0]}"
   end
 end
 
@@ -190,19 +177,55 @@ end
 # here is where we actually run the tests
 ###################################################################
 
-puts "  Launching Max..."
-launchMax()
+begin
+	Timeout::timeout(120) { # For each phase, set a simple timeout so that we can exit test script if Max is not responding.
+		puts "  Launching Max..."
+		launchMax()
+	}
+rescue Timeout::Error
+	estring << "\n\n  Max could not be launched."
+	testpass = "fail"
+end
 
-puts "  Establishing Communication with Max..."
-establishCommunication()
+begin
+	if testpass != "fail"
+		Timeout::timeout(120) {
+			puts "  Establishing Communication with Max..."
+			establishCommunication()
+		}
+	end
+rescue Timeout::Error
+	estring << "\n\n  Communication with Max could not be established."
+	testpass = "fail"
+end
 
-puts "  Waiting for the Max database to complete..."
-waitOnDatabase()
-puts
-puts "  Telling Max to run all of the tests for us..."
-mess = OSC::Message.new "test.master run"
-@oscSender.send(mess, 0, @host, @sendPort)
-waitForAllTestCompletion()
+begin
+	if testpass != "fail"
+		Timeout::timeout(600) {
+			puts "  Waiting for the Max database to complete..."
+			waitOnDatabase()
+		}
+	end
+rescue Timeout::Error
+	estring << "\n\n  Max Database harvesting did not complete."
+	testpass = "fail"
+end
+
+begin
+	if testpass != "fail"
+		Timeout::timeout(600) {
+			puts
+			puts "  Telling Max to run all of the tests for us..."
+			mess = OSC::Message.new "test.master run"
+			@oscSender.send(mess, 0, @host, @sendPort)
+			waitForAllTestCompletion()
+		}
+	end
+rescue Timeout::Error
+	estring << "\n\n  Max was interrupted during tests."
+	testpass = "fail"
+end
+
 
 mess = OSC::Message.new 'max quit'
 @oscSender.send(mess, 0, @host, @sendPort)
@@ -212,19 +235,20 @@ puts "  RESULTS"
 
 sleep 5 # hack -- the db might still be open because it doesn't get flushed in a quittask...
 
-puts "  opening database at #{@testdbPath}"
 db = SQLite3::Database.new( "#{@testdbPath}" )
 
 testcount = db.execute("SELECT test_name FROM tests WHERE test_start >= Datetime('#{@starttime}') ").length
 assertcount = db.execute("SELECT assertion_name FROM assertions WHERE assertion_finish >= Datetime('#{@starttime}') ").length
 
-estring = "    Executed #{testcount} Tests with #{assertcount} Assertions"
+estring << "\n"
+estring << "    Executed #{testcount} Tests with #{assertcount} Assertions"
 failed_assertions = db.execute("SELECT assertion_name FROM assertions WHERE assertion_value != 'Pass' AND assertion_finish >= Datetime('#{@starttime}')").length
-if (failed_assertions == 0)
+if (failed_assertions == 0 && testpass != "fail")
   estring << "\n    All assertions passed.  Congratulations!"
+  testpass = "pass"
 else
   failed_tests = Hash.new
-
+  testpass = "fail"
   db.execute("SELECT assertion_id, test_id_ext, assertion_name FROM assertions WHERE assertion_value != 'Pass' AND  assertion_finish >= Datetime('#{@starttime}')") do |row|
     failed_tests[row[1]] = true;
   end
@@ -235,22 +259,28 @@ else
     estring << "\n\n    FAILED TEST ( #{testname} )"
     db.execute( "SELECT assertion_id, assertion_name, assertion_value, assertion_finish FROM assertions WHERE test_id_ext = #{test_id}" ) do |row|
       estring << "\n      assertion: #{row[1]}    result: #{row[2]} #{'****' if row[2]!='Pass'}"
-    end
+	end
     db.execute( "SELECT log_id, text, timestamp FROM logs WHERE test_id_ext = #{test_id}" ) do |row|
       estring << "\n      log: #{row[1]}"
-    end    
+    end
   end
 end
 
 estring << "\n\n"
 # export results so a caller of this script is able to access the summary for e.g. automated email delivery
-ENV['MAXTEST'] = estring
+ENV['MAXTEST'] = estring # log
+ENV['MAXTEST_PASS'] = testpass # general pass/fail
+
 puts estring
+puts testpass
 
 puts "    Full test results can be found @ "
 puts "        #{@testdbPath} "
 puts "    and explored in your favorite SQLite database client."
 puts
+
+@oscSender.close # don't forget to close the ports!
+@oscReceiver.close
 
 # Must explicitly exit or we end up with a zombie process due to un-joined threads
 exit 0 if !@noexit
