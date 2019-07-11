@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		226605D4152B6E1B00FFCFD0 /* test.assert.c in Sources */ = {isa = PBXBuildFile; fileRef = 226605D3152B6E1B00FFCFD0 /* test.assert.c */; };
-		226605D8152B78DB00FFCFD0 /* test.terminate.c in Sources */ = {isa = PBXBuildFile; fileRef = 226605D7152B78DB00FFCFD0 /* test.terminate.c */; };
-		226605FF152CB2EC00FFCFD0 /* ext_test.c in Sources */ = {isa = PBXBuildFile; fileRef = 226605FE152CB2EC00FFCFD0 /* ext_test.c */; };
+		226605D4152B6E1B00FFCFD0 /* test.assert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 226605D3152B6E1B00FFCFD0 /* test.assert.cpp */; };
+		226605D8152B78DB00FFCFD0 /* test.terminate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 226605D7152B78DB00FFCFD0 /* test.terminate.cpp */; };
+		226605FF152CB2EC00FFCFD0 /* ext_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 226605FE152CB2EC00FFCFD0 /* ext_test.cpp */; };
 		22922AD50F38D68200B1EFEA /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 22922AD40F38D68200B1EFEA /* commonsyms.c */; };
-		22C3908E152F6DC900D3D340 /* test.log.c in Sources */ = {isa = PBXBuildFile; fileRef = 22C3908D152F6DC900D3D340 /* test.log.c */; };
+		22C3908E152F6DC900D3D340 /* test.log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22C3908D152F6DC900D3D340 /* test.log.cpp */; };
 		22D3978A1056BD1C004D8017 /* oscar.c in Sources */ = {isa = PBXBuildFile; fileRef = 22D397821056BD1C004D8017 /* oscar.c */; };
 		22D3978B1056BD1C004D8017 /* oscar.h in Headers */ = {isa = PBXBuildFile; fileRef = 22D397831056BD1C004D8017 /* oscar.h */; };
-		22D3978C1056BD1C004D8017 /* test.db.c in Sources */ = {isa = PBXBuildFile; fileRef = 22D397841056BD1C004D8017 /* test.db.c */; };
+		22D3978C1056BD1C004D8017 /* test.db.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22D397841056BD1C004D8017 /* test.db.cpp */; };
 		22D3978D1056BD1C004D8017 /* test.master.c in Sources */ = {isa = PBXBuildFile; fileRef = 22D397851056BD1C004D8017 /* test.master.c */; };
-		22D3978E1056BD1C004D8017 /* test.port.c in Sources */ = {isa = PBXBuildFile; fileRef = 22D397861056BD1C004D8017 /* test.port.c */; };
+		22D3978E1056BD1C004D8017 /* test.port.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22D397861056BD1C004D8017 /* test.port.cpp */; };
 		22D397901056BD1C004D8017 /* test.runner.c in Sources */ = {isa = PBXBuildFile; fileRef = 22D397881056BD1C004D8017 /* test.runner.c */; };
 		22D397911056BD1C004D8017 /* test.unit.c in Sources */ = {isa = PBXBuildFile; fileRef = 22D397891056BD1C004D8017 /* test.unit.c */; };
-		22D4AB031535D74400B73671 /* test.sample~.c in Sources */ = {isa = PBXBuildFile; fileRef = 22D4AB021535D74300B73671 /* test.sample~.c */; };
+		22D4AB031535D74400B73671 /* test.sample~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22D4AB021535D74300B73671 /* test.sample~.cpp */; };
 		22ED8FE516837435006E09B4 /* test.equals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22ED8FE416837435006E09B4 /* test.equals.cpp */; };
 /* End PBXBuildFile section */
 
@@ -27,20 +27,20 @@
 		220A664819C0AF4800CB11D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		223DF8F31357806100A8BCE8 /* max-extensions-debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "max-extensions-debug.xcconfig"; path = "../max-extensions-debug.xcconfig"; sourceTree = "<group>"; };
 		223DF8F41357806100A8BCE8 /* max-extensions-release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "max-extensions-release.xcconfig"; path = "../max-extensions-release.xcconfig"; sourceTree = "<group>"; };
-		226605D3152B6E1B00FFCFD0 /* test.assert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = test.assert.c; sourceTree = "<group>"; };
-		226605D7152B78DB00FFCFD0 /* test.terminate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = test.terminate.c; sourceTree = "<group>"; };
-		226605FE152CB2EC00FFCFD0 /* ext_test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ext_test.c; sourceTree = "<group>"; };
+		226605D3152B6E1B00FFCFD0 /* test.assert.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test.assert.cpp; sourceTree = "<group>"; };
+		226605D7152B78DB00FFCFD0 /* test.terminate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test.terminate.cpp; sourceTree = "<group>"; };
+		226605FE152CB2EC00FFCFD0 /* ext_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ext_test.cpp; sourceTree = "<group>"; };
 		22922AD40F38D68200B1EFEA /* commonsyms.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = commonsyms.c; path = "../maxsdk/source/c74support/max-includes/common/commonsyms.c"; sourceTree = SOURCE_ROOT; };
 		22BF33FE107E07A300626BA1 /* ext_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ext_test.h; sourceTree = SOURCE_ROOT; };
-		22C3908D152F6DC900D3D340 /* test.log.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = test.log.c; sourceTree = "<group>"; };
+		22C3908D152F6DC900D3D340 /* test.log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test.log.cpp; sourceTree = "<group>"; };
 		22D397821056BD1C004D8017 /* oscar.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = oscar.c; sourceTree = "<group>"; };
 		22D397831056BD1C004D8017 /* oscar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = oscar.h; sourceTree = "<group>"; };
-		22D397841056BD1C004D8017 /* test.db.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = test.db.c; sourceTree = "<group>"; };
+		22D397841056BD1C004D8017 /* test.db.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test.db.cpp; sourceTree = "<group>"; };
 		22D397851056BD1C004D8017 /* test.master.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = test.master.c; sourceTree = "<group>"; };
-		22D397861056BD1C004D8017 /* test.port.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = test.port.c; sourceTree = "<group>"; };
+		22D397861056BD1C004D8017 /* test.port.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test.port.cpp; sourceTree = "<group>"; };
 		22D397881056BD1C004D8017 /* test.runner.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = test.runner.c; sourceTree = "<group>"; };
 		22D397891056BD1C004D8017 /* test.unit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = test.unit.c; sourceTree = "<group>"; };
-		22D4AB021535D74300B73671 /* test.sample~.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "test.sample~.c"; sourceTree = "<group>"; };
+		22D4AB021535D74300B73671 /* test.sample~.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "test.sample~.cpp"; sourceTree = "<group>"; };
 		22ED8FE416837435006E09B4 /* test.equals.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test.equals.cpp; sourceTree = "<group>"; };
 		2FBBEAE508F335360078DB84 /* oscar.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = oscar.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -63,7 +63,7 @@
 				223DF8F41357806100A8BCE8 /* max-extensions-release.xcconfig */,
 				220A664819C0AF4800CB11D2 /* Info.plist */,
 				22BF33FE107E07A300626BA1 /* ext_test.h */,
-				226605FE152CB2EC00FFCFD0 /* ext_test.c */,
+				226605FE152CB2EC00FFCFD0 /* ext_test.cpp */,
 				22D397831056BD1C004D8017 /* oscar.h */,
 				08FB77ADFE841716C02AAC07 /* Source */,
 				226605D6152B78B800FFCFD0 /* Integration Testing */,
@@ -95,11 +95,11 @@
 		226605D6152B78B800FFCFD0 /* Integration Testing */ = {
 			isa = PBXGroup;
 			children = (
-				226605D3152B6E1B00FFCFD0 /* test.assert.c */,
+				226605D3152B6E1B00FFCFD0 /* test.assert.cpp */,
 				22ED8FE416837435006E09B4 /* test.equals.cpp */,
-				22C3908D152F6DC900D3D340 /* test.log.c */,
-				226605D7152B78DB00FFCFD0 /* test.terminate.c */,
-				22D4AB021535D74300B73671 /* test.sample~.c */,
+				22C3908D152F6DC900D3D340 /* test.log.cpp */,
+				226605D7152B78DB00FFCFD0 /* test.terminate.cpp */,
+				22D4AB021535D74300B73671 /* test.sample~.cpp */,
 			);
 			name = "Integration Testing";
 			sourceTree = "<group>";
@@ -107,8 +107,8 @@
 		226605D9152B78E400FFCFD0 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
-				22D397841056BD1C004D8017 /* test.db.c */,
-				22D397861056BD1C004D8017 /* test.port.c */,
+				22D397841056BD1C004D8017 /* test.db.cpp */,
+				22D397861056BD1C004D8017 /* test.port.cpp */,
 				22922AD40F38D68200B1EFEA /* commonsyms.c */,
 			);
 			name = Infrastructure;
@@ -201,16 +201,16 @@
 			files = (
 				22922AD50F38D68200B1EFEA /* commonsyms.c in Sources */,
 				22D3978A1056BD1C004D8017 /* oscar.c in Sources */,
-				22D3978C1056BD1C004D8017 /* test.db.c in Sources */,
+				22D3978C1056BD1C004D8017 /* test.db.cpp in Sources */,
 				22D3978D1056BD1C004D8017 /* test.master.c in Sources */,
-				22D3978E1056BD1C004D8017 /* test.port.c in Sources */,
+				22D3978E1056BD1C004D8017 /* test.port.cpp in Sources */,
 				22D397901056BD1C004D8017 /* test.runner.c in Sources */,
 				22D397911056BD1C004D8017 /* test.unit.c in Sources */,
-				226605D4152B6E1B00FFCFD0 /* test.assert.c in Sources */,
-				226605D8152B78DB00FFCFD0 /* test.terminate.c in Sources */,
-				226605FF152CB2EC00FFCFD0 /* ext_test.c in Sources */,
-				22C3908E152F6DC900D3D340 /* test.log.c in Sources */,
-				22D4AB031535D74400B73671 /* test.sample~.c in Sources */,
+				226605D4152B6E1B00FFCFD0 /* test.assert.cpp in Sources */,
+				226605D8152B78DB00FFCFD0 /* test.terminate.cpp in Sources */,
+				226605FF152CB2EC00FFCFD0 /* ext_test.cpp in Sources */,
+				22C3908E152F6DC900D3D340 /* test.log.cpp in Sources */,
+				22D4AB031535D74400B73671 /* test.sample~.cpp in Sources */,
 				22ED8FE516837435006E09B4 /* test.equals.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,13 +266,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 223DF8F31357806100A8BCE8 /* max-extensions-debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = ../Info.plist;
-				ONLY_ACTIVE_ARCH = NO;
-				SDKROOT = macosx;
 			};
 			name = Development;
 		};
@@ -280,13 +277,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 223DF8F41357806100A8BCE8 /* max-extensions-release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = ../Info.plist;
-				ONLY_ACTIVE_ARCH = NO;
-				SDKROOT = macosx;
 			};
 			name = Deployment;
 		};

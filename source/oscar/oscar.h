@@ -62,6 +62,9 @@ typedef struct _testmaster {
 	
 } t_testmaster;
 
+
+BEGIN_USING_C_LINKAGE
+
 void	testmaster_classinit(void);
 void	testmaster_quittask(void);
 void*	testmaster_new(t_symbol *s, long argc, t_atom *argv);
@@ -69,6 +72,8 @@ void	testmaster_free(t_testmaster *m);
 void	testmaster_integration_recurse(t_testmaster *m);
 void	testmaster_integration(t_testmaster *m, t_symbol *s, long argc, t_atom *argv);
 void	testmaster_run(t_testmaster *m, t_symbol *s, long argc, t_atom *argv);
+
+END_USING_C_LINKAGE
 
 
 /************************************************************************/
@@ -83,6 +88,9 @@ typedef struct _testdb {
 	t_database	*d_db;				///< test results are written to this database for persistence	
 } t_testdb;
 
+
+BEGIN_USING_C_LINKAGE
+
 void	testdb_classinit(void);
 void*	testdb_new(t_symbol *name, long argc, t_atom *argv);
 void	testdb_free(t_testdb *d);
@@ -90,6 +98,8 @@ void	testdb_setup(t_testdb *d);
 long	testdb_createcase(t_testdb *d, const char* test_name);
 void	testdb_closecase(t_testdb *d, long test_id);
 void	testdb_log(t_testdb *d, long test_id, const char* text, ...);
+
+END_USING_C_LINKAGE
 
 
 /************************************************************************/
@@ -111,6 +121,9 @@ typedef struct _testrunner {
 	t_test		*r_testunit;		///< the test currently running
 } t_testrunner;
 
+
+BEGIN_USING_C_LINKAGE
+
 void		testrunner_classinit(void);
 void*		testrunner_new(t_symbol *s, long argc, t_atom *argv);
 void		testrunner_free(t_testrunner *r);
@@ -118,6 +131,8 @@ void		testrunner_notify(t_testrunner *r, t_symbol *s, t_symbol *msg, void *sende
 void		testrunner_one_integration(t_testrunner *r, t_symbol *testname);
 void		testrunner_integration(t_testrunner *r);
 void		testrunner_dointegration(t_testrunner *r);
+
+END_USING_C_LINKAGE
 
 
 /************************************************************************/
@@ -133,12 +148,17 @@ typedef struct _testport {
 	t_object	*u_udpsend;			///< udpsend instance
 } t_testport;
 
+
+BEGIN_USING_C_LINKAGE
+
 void		testport_classinit(void);
 void*		testport_new(t_symbol *s, long argc, t_atom *argv);
 void 		testport_free(t_testport *u);
 t_max_err	testport_notify(t_testport *u, t_symbol *s, t_symbol *msg, void *sender, void *data);
 t_max_err	testport_send(t_testport *u, t_symbol *msg, long argc, t_atom *argv);
 void		testport_ping(t_testport *u);
+
+END_USING_C_LINKAGE
 
 
 /************************************************************************/
@@ -154,12 +174,17 @@ typedef struct _testunit {
 	long		o_id;				///< database id for this test
 } t_testunit;
 
+
+BEGIN_USING_C_LINKAGE
+
 void	testunit_classinit(void);
 void*	testunit_new(t_symbol *s, long argc, t_atom *argv);
 void 	testunit_free(t_testunit *o);
 void	testunit_log(t_testunit *u, const char* text);
 void	testunit_assert(t_testunit *u, const char* assertion_name, t_bool passed, t_symbol **tags, long tag_count);
 void	testunit_terminate(t_testunit *u);
+
+END_USING_C_LINKAGE
 
 
 /************************************************************************/
@@ -193,6 +218,9 @@ typedef struct _testassert {
 	long		a_tagcount;				///< number of tags
 } t_testassert;
 
+
+BEGIN_USING_C_LINKAGE
+
 void	testassert_classinit(void);
 void*	testassert_new(t_symbol *s, long argc, t_atom *argv);
 void 	testassert_free(t_testassert *x);
@@ -202,6 +230,8 @@ void	testassert_int(t_testassert *x, long v);
 void	testassert_float(t_testassert *x, double v);
 void	testassert_anything(t_testassert *x, t_symbol *s, long argc, t_atom *argv);
 void	testassert_pop(t_testassert *x);
+
+END_USING_C_LINKAGE
 
 
 /************************************************************************/
@@ -229,6 +259,9 @@ typedef struct _testlog {
 	t_test		*a_test;	///< test object
 } t_testlog;
 
+
+BEGIN_USING_C_LINKAGE
+
 void	testlog_classinit(void);
 void*	testlog_new(t_symbol *s, long argc, t_atom *argv);
 void 	testlog_free(t_testlog *x);
@@ -236,6 +269,8 @@ void	testlog_assist(t_testlog *x, void *b, long m, long a, char *s);
 void	testlog_int(t_testlog *x, long v);
 void	testlog_float(t_testlog *x, double v);
 void	testlog_anything(t_testlog *x, t_symbol *s, long argc, t_atom *argv);
+
+END_USING_C_LINKAGE
 
 
 /************************************************************************/
@@ -252,11 +287,16 @@ typedef struct _testterminate {
 	t_test		*x_test;			///< test object that is calling this assertion
 } t_testterminate;
 
+
+BEGIN_USING_C_LINKAGE
+
 void	testterminate_classinit(void);
 void*	testterminate_new(t_symbol *s, long argc, t_atom *argv);
 void 	testterminate_free(t_testterminate *x);
 void	testterminate_assist(t_testterminate *x, void *b, long m, long a, char *s);
 void	testterminate_bang(t_testterminate *x);
+
+END_USING_C_LINKAGE
 
 
 /************************************************************************/
@@ -265,5 +305,8 @@ void	testterminate_bang(t_testterminate *x);
 #pragma mark test.sample~
 #endif 
 
+BEGIN_USING_C_LINKAGE
+
 void	testsample_classinit(void);
 
+END_USING_C_LINKAGE
