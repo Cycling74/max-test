@@ -36,7 +36,7 @@ project.xcworkspace
 
 *.sdf
 *.suo
-misc/testpackage-config.json
+misc/max-test-config.json
 
 .dsp_cache
 .DS_Store

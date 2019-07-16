@@ -32,7 +32,7 @@ void testmaster_classinit(void)
 		t_dictionary *d = NULL;
 		t_max_err err;
 		
-		strncpy_zero(filename, "testpackage-config.json", MAX_FILENAME_CHARS);
+		strncpy_zero(filename, "max-test-config.json", MAX_FILENAME_CHARS);
 		locatefile_extended(filename, &path, &type, NULL, 0);
 		err = dictionary_read(filename, path, &d);
 		if (!err) {
