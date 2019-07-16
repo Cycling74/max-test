@@ -29,6 +29,7 @@ require 'fileutils'
 require 'pathname'
 require 'sqlite3'
 require 'osc'
+require "open3"
 
 
 ###################################################################
@@ -41,7 +42,7 @@ if (ARGV.length < 1 || ARGV.length > 2)
   puts '  ruby test.rb "/Applications"'
   puts '  ruby test.rb "/Applications/Max 6.1"'
   puts '  ruby test.rb "/Applications/Max7.app"  --- you can give the path to the max application directly'
-  puts '  ruby test.rb "C:\Program Files\Cycling \'74\Max 6.1"'
+  puts '  ruby test.rb "C:\Program Files\Cycling \'74\Max 8"'
   puts
   exit;
 end
@@ -49,6 +50,16 @@ end
 @maxfolder = ARGV[0]
 @noexit = false
 @noexit = true if ARGV.length > 1
+
+
+
+curdir = Dir.pwd
+Dir.chdir @maxfolder
+puts 'MAX FOLDER'
+puts Dir.pwd
+@maxfolder = Dir.pwd
+Dir.chdir curdir
+
 
 ###################################################################
 # initialization
@@ -168,7 +179,7 @@ def launchMax
       IO.popen("#{archcmd} \"#{@maxfolder}/Max.app/Contents/MacOS/Max\"")
     end
   else
-    IO.popen("#{@maxfolder}/Max.exe")
+    IO.popen "\"#{@maxfolder}/Max.exe\""
   end
 end
 

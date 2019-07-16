@@ -43,7 +43,7 @@ void testdb_free(t_testdb *d)
 void testdb_setup(t_testdb *d)
 {
 	if (!d->d_db) {
-		short			path = packages_getpackagepath("testpackage");
+		short			path = packages_getpackagepath("max-test");
 		char			fullpath[MAX_PATH_CHARS];
 		short			apppath = path_getapppath();
 		char			appfullpath[MAX_PATH_CHARS];

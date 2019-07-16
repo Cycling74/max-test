@@ -33,6 +33,9 @@ extensions
 *.db3
 xcuserdata
 project.xcworkspace
+.vs
+intermediate
+*.vcxproj.user
 
 *.sdf
 *.suo
