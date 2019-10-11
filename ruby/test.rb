@@ -18,17 +18,10 @@ if !/^sqlite3/.match gemlist
   puts
   exit
 end
-if !/^rosc/.match gemlist
-  puts
-  puts "-> You are missing the 'rosc' rubygem, which you need for automated testing."
-  puts "-> Please type 'gem install rosc' in the Terminal."
-  puts
-  exit
-end
 require 'fileutils'
 require 'pathname'
 require 'sqlite3'
-require 'osc'
+require "#{olddir}/rosc/lib/osc.rb"
 require "open3"
 
 

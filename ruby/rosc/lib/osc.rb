@@ -239,6 +239,9 @@ module OSC
     def self.decode(packet)
       # XXX I think it would have been better to use a StringScanner. Maybe I
       # will convert it someday...
+      if (packet == nil)
+        return Message.new("/")
+      end
       io = StringIO.new(packet)
       id = decode_string(io)
       if id == '#bundle'
