@@ -20,13 +20,12 @@
 #include "ext_packages.h"
 #include "ext_test.h"
 
+BEGIN_USING_C_LINKAGE
 extern t_symbol *ps_testmaster;
 extern t_symbol *ps_testport;
 extern t_atom_long g_port_send;
 extern t_atom_long g_port_listen;
 extern char g_dbpath[MAX_PATH_CHARS];
-
-BEGIN_USING_C_LINKAGE
 
 void deferred_startup(void);
 t_max_err loadextern(t_symbol *objectname, long argc, t_atom *argv, t_object **object);
