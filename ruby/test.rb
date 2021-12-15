@@ -164,8 +164,8 @@ end
 def launchMax
   if RUBY_PLATFORM.match(/darwin/)
     archcmd = ""
-    archcmd << "arch -arch i386" if /^i386/.match(ENV['ARCHPREFERENCE'])
     archcmd << "arch -arch x86_64" if /^x86_64/.match(ENV['ARCHPREFERENCE'])
+    archcmd << "arch -arch arm64" if /^arm64/.match(ENV['ARCHPREFERENCE'])
     if @maxfolder.match(/\.app\/*$/) # check if app name given directly
       IO.popen("#{archcmd} \"#{@maxfolder}/Contents/MacOS/Max\"")
     else # nope, just a folder name, so assume Max.app
