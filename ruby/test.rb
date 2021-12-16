@@ -33,14 +33,15 @@ if (ARGV.length < 1 || ARGV.length > 2)
   puts "usage: ruby test.rb <path-to-max> <no-exit>"
   puts "examples:"
   puts '  ruby test.rb "/Applications"'
-  puts '  ruby test.rb "/Applications/Max 6.1"'
-  puts '  ruby test.rb "/Applications/Max7.app"  --- you can give the path to the max application directly'
+  puts '  ruby test.rb "/Applications/Max.app"  --- you can give the path to the max application directly'
   puts '  ruby test.rb "C:\Program Files\Cycling \'74\Max 8"'
+  puts '  ruby test.rb "/Applications/Max8 i386" --- For MacOS, you can specify the arch to run ("i386" for Intel, "arm64" for M1)'
   puts
   exit;
 end
 
 @maxfolder = ARGV[0]
+@arch = ARGV[1]
 @noexit = false
 @noexit = true if ARGV.length > 1
 
@@ -164,8 +165,8 @@ end
 def launchMax
   if RUBY_PLATFORM.match(/darwin/)
     archcmd = ""
-    archcmd << "arch -arch x86_64" if /^x86_64/.match(ENV['ARCHPREFERENCE'])
-    archcmd << "arch -arch arm64" if /^arm64/.match(ENV['ARCHPREFERENCE'])
+    archcmd << "arch -arch x86_64" if @arch == 'x86_64'
+    archcmd << "arch -arch arm64" if @arch == 'arm64'
     if @maxfolder.match(/\.app\/*$/) # check if app name given directly
       IO.popen("#{archcmd} \"#{@maxfolder}/Contents/MacOS/Max\"")
     else # nope, just a folder name, so assume Max.app
