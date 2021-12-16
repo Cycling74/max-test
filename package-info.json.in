@@ -21,6 +21,6 @@
 		"forcerestart" : 1
 	},
 	"tags" : [ ],
-	"version" : "1.2.0",
+	"version" : "1.2.1",
 	"website" : "http://www.github.com/Cycling74/max-test"
 }
