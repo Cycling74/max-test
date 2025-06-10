@@ -2,42 +2,17 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 8,
+			"major" : 9,
 			"minor" : 1,
-			"revision" : 4,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 162.0, 79.0, 1031.0, 568.0 ],
-		"bglocked" : 0,
-		"openinpresentation" : 0,
-		"default_fontsize" : 12.0,
-		"default_fontface" : 0,
+		"rect" : [ 134.0, 172.0, 1031.0, 568.0 ],
 		"default_fontname" : "Helvetica Neue Light",
-		"gridonopen" : 1,
 		"gridsize" : [ 5.0, 5.0 ],
-		"gridsnaponopen" : 1,
-		"objectsnaponopen" : 1,
-		"statusbarvisible" : 2,
-		"toolbarvisible" : 1,
-		"lefttoolbarpinned" : 0,
-		"toptoolbarpinned" : 0,
-		"righttoolbarpinned" : 0,
-		"bottomtoolbarpinned" : 0,
-		"toolbars_unpinned_last_save" : 0,
-		"tallnewobj" : 0,
-		"boxanimatetime" : 200,
-		"enablehscroll" : 1,
-		"enablevscroll" : 1,
-		"devicewidth" : 0.0,
-		"description" : "",
-		"digest" : "",
-		"tags" : "",
-		"style" : "",
-		"subpatcher_template" : "",
-		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-24",
@@ -245,7 +220,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 258.0, 40.0, 32.5, 23.0 ],
+					"patching_rect" : [ 188.0, 40.0, 32.5, 23.0 ],
 					"text" : "qlim"
 				}
 
@@ -334,42 +309,17 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
+							"major" : 9,
 							"minor" : 1,
-							"revision" : 4,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
 						"rect" : [ 315.0, 125.0, 869.0, 738.0 ],
-						"bglocked" : 0,
-						"openinpresentation" : 0,
-						"default_fontsize" : 12.0,
-						"default_fontface" : 0,
 						"default_fontname" : "Helvetica Neue Light",
-						"gridonopen" : 1,
 						"gridsize" : [ 5.0, 5.0 ],
-						"gridsnaponopen" : 1,
-						"objectsnaponopen" : 1,
-						"statusbarvisible" : 2,
-						"toolbarvisible" : 1,
-						"lefttoolbarpinned" : 0,
-						"toptoolbarpinned" : 0,
-						"righttoolbarpinned" : 0,
-						"bottomtoolbarpinned" : 0,
-						"toolbars_unpinned_last_save" : 0,
-						"tallnewobj" : 0,
-						"boxanimatetime" : 200,
-						"enablehscroll" : 1,
-						"enablevscroll" : 1,
-						"devicewidth" : 0.0,
-						"description" : "",
-						"digest" : "",
-						"tags" : "",
-						"style" : "",
-						"subpatcher_template" : "",
-						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-45",
@@ -749,8 +699,8 @@
 									"id" : "obj-29",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
-									"numoutlets" : 9,
-									"outlettype" : [ "float", "list", "float", "float", "float", "float", "float", "", "int" ],
+									"numoutlets" : 10,
+									"outlettype" : [ "float", "list", "float", "float", "float", "float", "float", "", "int", "" ],
 									"patching_rect" : [ 595.0, 120.0, 129.0, 23.0 ],
 									"text" : "info~ desired-response"
 								}
@@ -763,8 +713,8 @@
 									"id" : "obj-28",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
-									"numoutlets" : 9,
-									"outlettype" : [ "float", "list", "float", "float", "float", "float", "float", "", "int" ],
+									"numoutlets" : 10,
+									"outlettype" : [ "float", "list", "float", "float", "float", "float", "float", "", "int", "" ],
 									"patching_rect" : [ 445.0, 120.0, 113.5, 23.0 ],
 									"text" : "info~ response"
 								}
@@ -1368,11 +1318,7 @@
 ,
 					"patching_rect" : [ 102.0, 375.0, 100.0, 23.0 ],
 					"saved_object_attributes" : 					{
-						"description" : "",
-						"digest" : "",
-						"fontname" : "Helvetica Neue Light",
-						"globalpatchername" : "",
-						"tags" : ""
+						"fontname" : "Helvetica Neue Light"
 					}
 ,
 					"text" : "p buffer-compare"
@@ -1553,7 +1499,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 258.0, 159.0, 32.5, 23.0 ],
+					"patching_rect" : [ 200.0, 159.0, 32.5, 23.0 ],
 					"text" : "qlim"
 				}
 
@@ -1565,7 +1511,8 @@
 					"id" : "obj-37",
 					"maxclass" : "newobj",
 					"numinlets" : 3,
-					"numoutlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 343.500030999999979, 519.0, 94.0, 23.0 ],
 					"text" : "poke~ response"
 				}
@@ -1609,8 +1556,8 @@
 					"id" : "obj-34",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "signal" ],
+					"numoutlets" : 2,
+					"outlettype" : [ "signal", "signal" ],
 					"patching_rect" : [ 343.500030999999979, 452.0, 88.0, 23.0 ],
 					"text" : "index~ impulse"
 				}
@@ -1731,6 +1678,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-23", 0 ],
+					"source" : [ "obj-12", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-29", 0 ],
 					"source" : [ "obj-12", 3 ]
 				}
@@ -1740,13 +1694,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-30", 0 ],
 					"source" : [ "obj-12", 4 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-38", 0 ],
-					"source" : [ "obj-12", 0 ]
 				}
 
 			}
@@ -1819,13 +1766,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-10", 0 ],
 					"source" : [ "obj-19", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-33", 0 ],
-					"source" : [ "obj-2", 0 ]
 				}
 
 			}
@@ -1940,13 +1880,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-23", 0 ],
-					"source" : [ "obj-38", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-43", 0 ],
 					"source" : [ "obj-4", 0 ]
 				}
@@ -1998,7 +1931,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-2", 0 ],
+					"destination" : [ "obj-33", 0 ],
 					"source" : [ "obj-7", 0 ]
 				}
 
@@ -2028,23 +1961,24 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "oscar.mxo",
+				"name" : "test.assert.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "oscar.mxo",
+				"name" : "test.equals.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "oscar.mxo",
+				"name" : "test.log.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "oscar.mxo",
+				"name" : "test.terminate.mxo",
 				"type" : "iLaX"
 			}
  ],
-		"autosave" : 0
+		"autosave" : 0,
+		"toolbaradditions" : [ "packagemanager" ]
 	}
 
 }
