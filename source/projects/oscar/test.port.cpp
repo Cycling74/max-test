@@ -78,6 +78,41 @@ void testport_free(t_testport *u)
 		object_free(u->u_udpreceive);
 }
 
+static long get_num_tests ()
+{
+    short version = maxversion();
+    long test_count = 0;
+
+    if ( (((version >> 8) & 0xF) > 6) && (((version >> 8) & 0xF) < 15) ) {
+	t_database		*db = NULL;
+	t_db_result		*result = NULL;
+			
+	db_open(gensym("__maxdb__"), NULL, &db);
+	db_query(db, &result, "SELECT DISTINCT _name FROM _things WHERE (_kind = 'patcher' OR _kind = 'project') AND _name LIKE '%%.maxtest' AND _status = ''");
+	test_count = db_result_numrecords(result);
+	object_free(result);
+	db_close(&db);
+    }
+    else { // max 5 or 6
+	t_database		*db = NULL;
+	t_db_result		*result = NULL;
+			
+	db_open(gensym("__max5db__"), NULL, &db);
+	db_query(db, &result,
+		 "SELECT DISTINCT name FROM objects \
+					 JOIN files ON objects.file_id_ext = files.file_id \
+					 JOIN roles ON objects.role_id_ext = roles.role_id \
+					 WHERE \
+					 ((( role_id_ext IN (SELECT role_id FROM roles WHERE rolename = 'patcher' OR rolename = 'project') AND (validity > 0) OR flags & 2))) \
+					 AND \
+					 name LIKE '%%.maxtest'");
+	test_count = db_result_numrecords(result);
+	object_free(result);
+	db_close(&db);
+    }
+
+    return test_count;
+}
 
 // use this method to send messages from a network/remote to max or to testmaster, for example:
 //    max quit
@@ -111,6 +146,11 @@ t_max_err testport_notify(t_testport *u, t_symbol *s, t_symbol *msg, void *sende
 						atom_setsym(&a, gensym(g_dbpath));
 						snprintf_zero(ret, MAX_PATH_CHARS, "/testdb/path %s", g_dbpath);
 						testport_send(u, gensym("/testdb/path"), 1, &a);
+					}
+					else if (mess == gensym("/testdb/numtests?")) {
+					    t_atom	a;
+					    atom_setlong(&a, get_num_tests());
+					    testport_send(u, gensym("/testdb/numtests"), 1, &a);
 					}
 					else if (mess && mess->s_thing && !NOGOOD(mess->s_thing) && argc && argv) {
 						m = zgetfn(mess->s_thing, atom_getsym(argv+1));
