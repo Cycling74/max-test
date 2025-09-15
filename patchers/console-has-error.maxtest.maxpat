@@ -2,16 +2,15 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 7,
-			"minor" : 2,
+			"major" : 8,
+			"minor" : 6,
 			"revision" : 5,
-			"architecture" : "x86",
+			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
+		"classnamespace" : "box",
 		"rect" : [ 248.0, 291.0, 461.0, 415.0 ],
-		"bgcolor" : [ 0.239216, 0.254902, 0.278431, 1.0 ],
-		"editing_bgcolor" : [ 0.32549, 0.345098, 0.372549, 1.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,6 +37,7 @@
 		"tags" : "",
 		"style" : "cassiel",
 		"subpatcher_template" : "cassiel",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"color" : [ 0.7, 0.4, 0.3, 1.0 ],
@@ -46,7 +46,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 45.0, 295.0, 111.0, 20.0 ],
-					"style" : "",
 					"text" : "test.terminate"
 				}
 
@@ -59,7 +58,6 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "bang" ],
 					"patching_rect" : [ 135.0, 95.0, 32.0, 20.0 ],
-					"style" : "",
 					"text" : "b 2"
 				}
 
@@ -72,7 +70,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 255.0, 160.0, 176.0, 20.0 ],
-					"style" : "",
 					"text" : "won't-understand-BOOGLE"
 				}
 
@@ -80,13 +77,12 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-5",
-					"maxclass" : "number",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "bang" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 255.0, 195.0, 50.0, 20.0 ],
-					"style" : ""
+					"maxclass" : "newobj",
+					"numinlets" : 5,
+					"numoutlets" : 4,
+					"outlettype" : [ "int", "", "", "int" ],
+					"patching_rect" : [ 255.0, 195.0, 61.0, 20.0 ],
+					"text" : "counter"
 				}
 
 			}
@@ -95,8 +91,8 @@
 					"id" : "obj-2",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 45.0, 260.0, 335.0, 20.0 ],
 					"style" : "cassiel.ruby",
 					"text" : "CheckConsoleHasError console-has-error BOOGLE"
@@ -111,7 +107,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"patching_rect" : [ 135.0, 60.0, 68.0, 20.0 ],
-					"style" : "",
 					"text" : "loadbang"
 				}
 
@@ -120,8 +115,6 @@
 		"lines" : [ 			{
 				"patchline" : 				{
 					"destination" : [ "obj-8", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
 					"source" : [ "obj-1", 0 ]
 				}
 
@@ -129,8 +122,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-10", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
 					"source" : [ "obj-2", 0 ]
 				}
 
@@ -138,8 +129,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-5", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
 					"source" : [ "obj-7", 0 ]
 				}
 
@@ -147,8 +136,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
 					"source" : [ "obj-8", 0 ]
 				}
 
@@ -156,8 +143,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-7", 0 ],
-					"disabled" : 0,
-					"hidden" : 0,
 					"source" : [ "obj-8", 1 ]
 				}
 
@@ -186,22 +171,22 @@
 		"styles" : [ 			{
 				"name" : "cassiel",
 				"default" : 				{
+					"bgcolor" : [ 0.095481, 0.100396, 0.100293, 1.0 ],
 					"bgfillcolor" : 					{
-						"type" : "gradient",
+						"angle" : 270.0,
+						"autogradient" : 0,
 						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
 						"color1" : [ 0.486435, 0.462784, 0.5, 1.0 ],
 						"color2" : [ 0.19771, 0.188048, 0.201856, 1.0 ],
-						"angle" : 270.0,
 						"proportion" : 0.39,
-						"autogradient" : 0
+						"type" : "gradient"
 					}
 ,
-					"bgcolor" : [ 0.095481, 0.100396, 0.100293, 1.0 ],
 					"color" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"elementcolor" : [ 0.32549, 0.345098, 0.372549, 1.0 ],
-					"selectioncolor" : [ 0.784314, 0.145098, 0.023529, 1.0 ],
+					"fontname" : [ "Courier" ],
 					"patchlinecolor" : [ 0.960784, 0.827451, 0.156863, 0.9 ],
-					"fontname" : [ "Courier" ]
+					"selectioncolor" : [ 0.784314, 0.145098, 0.023529, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
@@ -210,8 +195,8 @@
 , 			{
 				"name" : "cassiel.ruby",
 				"default" : 				{
-					"textcolor_inverse" : [ 0.784314, 0.145098, 0.023529, 1.0 ],
-					"accentcolor" : [ 0.341176, 0.027451, 0.023529, 0.5 ]
+					"accentcolor" : [ 0.341176, 0.027451, 0.023529, 0.5 ],
+					"textcolor_inverse" : [ 0.784314, 0.145098, 0.023529, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
@@ -232,11 +217,11 @@
 				"name" : "sky-blue",
 				"default" : 				{
 					"bgcolor" : [ 0.670588, 0.74902, 0.807843, 1.0 ],
-					"textcolor_inverse" : [ 0.239216, 0.254902, 0.278431, 1.0 ],
 					"color" : [ 0.095481, 0.100396, 0.100293, 1.0 ],
 					"elementcolor" : [ 0.792189, 0.848618, 0.854853, 1.0 ],
+					"fontname" : [ "Courier" ],
 					"selectioncolor" : [ 0.870588, 0.415686, 0.062745, 1.0 ],
-					"fontname" : [ "Courier" ]
+					"textcolor_inverse" : [ 0.239216, 0.254902, 0.278431, 1.0 ]
 				}
 ,
 				"parentstyle" : "default",
@@ -248,12 +233,12 @@
 		"elementcolor" : [ 0.32549, 0.345098, 0.372549, 1.0 ],
 		"selectioncolor" : [ 0.784314, 0.145098, 0.023529, 1.0 ],
 		"patchlinecolor" : [ 0.960784, 0.827451, 0.156863, 0.9 ],
+		"bgcolor" : [ 0.239216, 0.254902, 0.278431, 1.0 ],
+		"editing_bgcolor" : [ 0.32549, 0.345098, 0.372549, 1.0 ],
 		"bgfillcolor_type" : "gradient",
 		"bgfillcolor_color1" : [ 0.486435, 0.462784, 0.5, 1.0 ],
 		"bgfillcolor_color2" : [ 0.19771, 0.188048, 0.201856, 1.0 ],
-		"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-		"bgfillcolor_angle" : 270.0,
-		"bgfillcolor_proportion" : 0.39
+		"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ]
 	}
 
 }
